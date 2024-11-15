@@ -53,11 +53,29 @@ section {
     border-radius: 8px;
     text-align: center;
     cursor: pointer;
+    transition: transform 0.3s;
 }
 
 .series-card img {
     width: 100%;
     border-radius: 5px;
+}
+
+.series-card button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.series-card button:hover {
+    background-color: #45a049;
 }
 
 footer {
