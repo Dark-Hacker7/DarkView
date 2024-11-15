@@ -5,58 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DarkView</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
-    <!-- الهيدر -->
     <header>
-        <div id="logo">DarkView</div>
-        <input type="text" id="searchInput" placeholder="ابحث عن مسلسل...">
-        <button id="loginButton">تسجيل الدخول</button>
+        <h1>DarkView</h1>
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">المسلسلات</a></li>
+                <li><a href="#">التقييمات</a></li>
+                <li><a href="#">تسجيل الدخول</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- قائمة المسلسلات -->
-    <div id="seriesContainer" class="series-list">
-        <!-- المسلسلات ستضاف هنا عبر جافا سكربت -->
-    </div>
+    <section id="latest-series">
+        <h2>أحدث المسلسلات</h2>
+        <div id="series-list"></div>
+    </section>
 
-    <!-- مشغل الفيديو عند النقر على مسلسل -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <video id="videoPlayer" controls>
-                <source id="videoSource" type="video/mp4">
-                متصفحك لا يدعم الفيديو.
-            </video>
-        </div>
-    </div>
+    <!-- تسجيل الدخول من Google -->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-    <!-- التقييم -->
-    <div id="rating" class="rating">
-        <p>قيم هذا المسلسل:</p>
-        <button onclick="rateSeries(1)">⭐</button>
-        <button onclick="rateSeries(2)">⭐⭐</button>
-        <button onclick="rateSeries(3)">⭐⭐⭐</button>
-        <button onclick="rateSeries(4)">⭐⭐⭐⭐</button>
-        <button onclick="rateSeries(5)">⭐⭐⭐⭐⭐</button>
-    </div>
-
-    <!-- التعليقات -->
-    <div id="commentsSection">
-        <h3>التعليقات</h3>
-        <input type="text" id="commentInput" placeholder="اكتب تعليقك...">
-        <button onclick="addComment()">إضافة تعليق</button>
-        <div id="commentsList"></div>
-    </div>
-
-    <!-- مفضلة المسلسلات -->
-    <div id="favorites">
-        <h3>المسلسلات المفضلة</h3>
-        <ul id="favoritesList"></ul>
-    </div>
-
-    <!-- الفوتر -->
     <footer>
-        <p>حقوق الطبع والنشر &copy; 2024 DarkView</p>
+        <p>© 2024 DarkView - جميع الحقوق محفوظة</p>
     </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
