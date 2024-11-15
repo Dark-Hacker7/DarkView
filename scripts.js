@@ -1,81 +1,77 @@
-// بيانات المسلسلات
+// المسلسلات المخزنة
 const seriesData = [
     {
         id: 1,
-        name: "مسلسل 1",
-        image: "https://link-to-your-image.com/image1.jpg",
-        videoUrl: "videos/episode1.mp4",
-        rating: 0,
-        description: "وصف المسلسل هنا"
+        title: "مسلسل 1",
+        description: "وصف المسلسل 1",
+        imageUrl: "https://via.placeholder.com/200x300",
+        rating: 4.5
     },
     {
         id: 2,
-        name: "مسلسل 2",
-        image: "https://link-to-your-image.com/image2.jpg",
-        videoUrl: "videos/episode2.mp4",
-        rating: 0,
-        description: "وصف المسلسل هنا"
+        title: "مسلسل 2",
+        description: "وصف المسلسل 2",
+        imageUrl: "https://via.placeholder.com/200x300",
+        rating: 4.8
+    },
+    {
+        id: 3,
+        title: "مسلسل 3",
+        description: "وصف المسلسل 3",
+        imageUrl: "https://via.placeholder.com/200x300",
+        rating: 4.0
     }
 ];
 
-// إضافة المسلسلات إلى الصفحة
+// عرض المسلسلات في الصفحة الرئيسية
 function displaySeries() {
-    const container = document.getElementById('seriesContainer');
-    container.innerHTML = '';
+    const seriesList = document.getElementById('series-list');
     seriesData.forEach(series => {
-        const seriesElement = document.createElement('div');
-        seriesElement.className = 'series';
-        seriesElement.innerHTML = `
-            <img src="${series.image}" alt="${series.name}">
-            <div class="series-info">
-                <h3>${series.name}</h3>
-                <p>${series.description}</p>
-            </div>
+        const card = document.createElement('div');
+        card.classList.add('series-card');
+        card.innerHTML = `
+            <img src="${series.imageUrl}" alt="${series.title}">
+            <h3>${series.title}</h3>
+            <p>${series.description}</p>
+            <p>التقييم: ${series.rating}</p>
+            <button onclick="viewSeries(${series.id})">عرض التفاصيل</button>
+            <button onclick="addToFavorites(${series.id})">إضافة إلى المفضلة</button>
+            <button onclick="rateSeries(${series.id}, 5)">تقييم 5 نجوم</button>
         `;
-        seriesElement.onclick = () => viewSeries(series.id);
-        container.appendChild(seriesElement);
+        seriesList.appendChild(card);
     });
 }
 
-// فتح الفيديو عند النقر على المسلسل
+// عرض تفاصيل المسلسل
 function viewSeries(seriesId) {
     const series = seriesData.find(s => s.id === seriesId);
-    document.getElementById('videoSource').src = series.videoUrl;
-    document.getElementById('videoPlayer').load();
-    document.getElementById('videoModal').style.display = "block"; // فتح نافذة الفيديو
+    alert(`العنوان: ${series.title}\nالتقييم: ${series.rating}\nالوصف: ${series.description}`);
 }
 
-// إغلاق نافذة الفيديو
-function closeModal() {
-    document.getElementById('videoModal').style.display = "none";
-}
-
-// إضافة تعليق
-function addComment() {
-    const commentInput = document.getElementById('commentInput');
-    const commentText = commentInput.value.trim();
-    if (commentText) {
-        const commentList = document.getElementById('commentsList');
-        const newComment = document.createElement('div');
-        newComment.className = 'comment';
-        newComment.textContent = commentText;
-        commentList.appendChild(newComment);
-        commentInput.value = ''; // مسح حقل التعليق
+// إضافة المسلسل إلى المفضلة
+function addToFavorites(seriesId) {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (!favorites.includes(seriesId)) {
+        favorites.push(seriesId);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        alert('تم إضافة المسلسل إلى المفضلة');
+    } else {
+        alert('المسلسل في المفضلة بالفعل');
     }
 }
 
-// حفظ المفضلة
-function addToFavorites(seriesId) {
-    const favoritesList = document.getElementById('favoritesList');
+// إضافة التقييم عند الضغط على زر التقييم
+function rateSeries(seriesId, rating) {
     const series = seriesData.find(s => s.id === seriesId);
-    const favoriteItem = document.createElement('li');
-    favoriteItem.textContent = series.name;
-    favoritesList.appendChild(favoriteItem);
+    series.rating = rating;  // تحديث التقييم
+    alert(`تم تحديث التقييم: ${series.title} إلى ${rating}`);
 }
 
-// التقييم
-function rateSeries(stars) {
-    alert(`تم تقييم المسلسل بـ ${stars} نجوم`);
+// تسجيل الدخول باستخدام Google
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    alert("أهلاً " + profile.getName());
 }
 
-window.onload = displaySeries;  // عرض المسلسلات عند تحميل الصفحة
+// تفعيل العرض عند تحميل الصفحة
+window.onload = displaySeries;
