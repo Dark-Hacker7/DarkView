@@ -3,35 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DarkView</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>DARK TV - الموقع المتطور لمشاهدة المسلسلات والأفلام</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>DarkView</h1>
+        <div class="logo">
+            <h1>DARK TV</h1>
+        </div>
         <nav>
-            <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#">المسلسلات</a></li>
-                <li><a href="#">التقييمات</a></li>
-                <li><a href="#">تسجيل الدخول</a></li>
-            </ul>
+            <a href="#home">الرئيسية</a>
+            <a href="#series">المسلسلات</a>
+            <a href="#movies">الأفلام</a>
+            <a href="#favorites">المفضلة</a>
+            <input type="text" id="search" placeholder="ابحث عن مسلسل أو فيلم...">
         </nav>
     </header>
 
-    <section id="latest-series">
-        <h2>أحدث المسلسلات</h2>
-        <div id="series-list"></div>
+    <!-- الصفحة الرئيسية -->
+    <section id="home">
+        <h2>آخر المسلسلات</h2>
+        <div class="content-container">
+            <div class="series-card">
+                <img src="series1.jpg" alt="مسلسل 1">
+                <div class="card-info">
+                    <h3>مسلسل 1</h3>
+                    <button class="favorite-btn">إضافة إلى المفضلة</button>
+                    <a href="series_details.html" class="view-btn">شاهد التفاصيل</a>
+                </div>
+            </div>
+            <!-- إضافة المزيد من المسلسلات -->
+        </div>
     </section>
 
-    <!-- تسجيل الدخول من Google -->
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <!-- المسلسلات -->
+    <section id="series">
+        <h2>المسلسلات</h2>
+        <div class="content-container">
+            <div class="series-card">
+                <img src="series2.jpg" alt="مسلسل 2">
+                <div class="card-info">
+                    <h3>مسلسل 2</h3>
+                    <button class="favorite-btn">إضافة إلى المفضلة</button>
+                    <a href="series_details.html" class="view-btn">شاهد التفاصيل</a>
+                </div>
+            </div>
+            <!-- إضافة المزيد من المسلسلات -->
+        </div>
+    </section>
+
+    <!-- الأفلام -->
+    <section id="movies">
+        <h2>الأفلام</h2>
+        <div class="content-container">
+            <div class="series-card">
+                <img src="movie1.jpg" alt="فيلم 1">
+                <div class="card-info">
+                    <h3>فيلم 1</h3>
+                    <button class="favorite-btn">إضافة إلى المفضلة</button>
+                    <a href="movie_details.html" class="view-btn">شاهد التفاصيل</a>
+                </div>
+            </div>
+            <!-- إضافة المزيد من الأفلام -->
+        </div>
+    </section>
 
     <footer>
-        <p>© 2024 DarkView - جميع الحقوق محفوظة</p>
+        <p>&copy; 2024 DARK TV. جميع الحقوق محفوظة.</p>
     </footer>
-
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
